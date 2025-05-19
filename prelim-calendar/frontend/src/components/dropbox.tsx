@@ -1,8 +1,9 @@
 import { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
+import './dropbox.css'
 
 function DropBox({ onDrop }: { onDrop: (files: File[]) => void }) {
-  const handleDrop = useCallback((acceptedFiles: File[]) => {onDrop(acceptedFiles)}, [onDrop])
+  const handleDrop = useCallback((acceptedFiles: File[]) => { onDrop(acceptedFiles) }, [onDrop])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleDrop,

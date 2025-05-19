@@ -1,18 +1,27 @@
 
 import { useState } from 'react'
-import DropBox from './components/dropbox'
+import DropBox from '../components/dropbox'
 import './webpage.css'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
 function Webpage() {
-  const [file, setFile] = useState<File | null>(null)
+  const [files, setFiles] = useState<File[]>([])
   const [googleToken, setGoogleToken] = useState<string | null>(null)
 
   return (
     <div className="App">
       <h1>Drop your Syllabuses Below</h1>
-      <DropBox onDrop={(files) => setFile(files[0])} />
-      {file && <p className="mt-4 text-center">Selected: {file.name}</p>}
+      <DropBox onDrop={(newFile) => setFiles(existingFiles => [...existingFiles, ...newFile])} />
+      {files.length > 0 && (
+        <div className="mt-4 text-center">
+          <p>Selected files:</p>
+          <div>
+            {files.map((file, idx) => (
+              <li key={idx}>{file.name}</li>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="mt-4 text-center">
         {!googleToken ? (
           <GoogleLogin
