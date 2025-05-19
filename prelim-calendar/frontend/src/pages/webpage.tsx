@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import DropBox from '../components/dropbox'
+import UploadButton from '../components/uploadButton'
 import './webpage.css'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
@@ -10,19 +11,8 @@ function Webpage() {
 
   return (
     <div className="App">
-      <h1>Drop your Syllabuses Below</h1>
-      <DropBox onDrop={(newFile) => setFiles(existingFiles => [...existingFiles, ...newFile])} />
-      {files.length > 0 && (
-        <div className="mt-4 text-center">
-          <p>Selected files:</p>
-          <div>
-            {files.map((file, idx) => (
-              <li key={idx}>{file.name}</li>
-            ))}
-          </div>
-        </div>
-      )}
-      <div className="mt-4 text-center">
+      <h1>Drop your Syllabuses Below!</h1>
+      <div className="google-signin">
         {!googleToken ? (
           <GoogleLogin
             onSuccess={credentialResponse => {
@@ -36,7 +26,22 @@ function Webpage() {
           <p>Google Calendar Connected!</p>
         )}
       </div>
+      <br></br>
+      <DropBox onDrop={(newFile) => setFiles(existingFiles => [...existingFiles, ...newFile])} />
+      {files.length > 0 && (
+        <div>
+          <p>Selected files:</p>
+          <div>
+            {files.map((file, idx) => (
+              <li key={idx}>{file.name}</li>
+            ))}
+          </div>
+          <UploadButton files={files} />
+        </div>
+      )}
     </div>
+    
+
   )
 }
 
