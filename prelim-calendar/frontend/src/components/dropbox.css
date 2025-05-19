@@ -1,0 +1,26 @@
+/* DropBox.css */
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 16rem; /* h-64 */
+  border: 4px dashed;
+  border-radius: 0.5rem; /* rounded-lg */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+  border-color: #9ca3af; /* gray-400 */
+}
+
+.dropzone.active {
+  border-color: #3b82f6; /* blue-500 */
+  background-color: #eff6ff; /* blue-50 */
+}
+
+.dropzone-text {
+  color: #4b5563; /* gray-600 */
+  text-align: center;
+  font-size: 1.125rem; /* text-lg */
+}
