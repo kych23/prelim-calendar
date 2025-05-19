@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DropBox from './components/dropbox'
+import DropBox from '../components/dropbox'
 import './webpage.css'
 
 function Webpage() {
@@ -12,11 +12,11 @@ function Webpage() {
       {files.length > 0 && (
         <div className="mt-4 text-center">
           <p>Selected files:</p>
-          <ul>
+          <div>
             {files.map((file, idx) => (
               <li key={idx}>{file.name}</li>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>
