@@ -1,4 +1,4 @@
-# Prelim Scheduler (tentative name)
+# Prelim Scheduler 
  
 application that converts your homework and exam dates to a google calendar
 
